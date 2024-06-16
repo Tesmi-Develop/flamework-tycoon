@@ -1,5 +1,5 @@
 {
-	"name": "test-tycoon-library",
+	"name": "test-library",
 	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
 		"$className": "DataModel",
@@ -11,6 +11,9 @@
 					"$className": "Folder",
 					"@rbxts": {
 						"$path": "../node_modules/@rbxts"
+					},
+					"@flamework": {
+						"$path": "../node_modules/@flamework"
 					}
 				}
 			},

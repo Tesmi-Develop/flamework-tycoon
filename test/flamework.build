@@ -1,0 +1,114 @@
+{
+	"version": 1,
+	"flameworkVersion": "1.2.3",
+	"identifiers": {
+		"@rbxts/flamework-tycoon:out/src/source/OwnerProfile@OwnerProfile": "$t:src/source/OwnerProfile@OwnerProfile",
+		"@rbxts/flamework-tycoon:out/src/source/TycoonLogger@TycoonLogger": "$t:src/source/TycoonLogger@TycoonLogger",
+		"@rbxts/flamework-tycoon:out/src/source/item/BaseTycoonItem@BaseTycoonItem": "$t:src/source/item/BaseTycoonItem@BaseTycoonItem",
+		"@rbxts/flamework-tycoon:out/src/source/BaseTycoonComponent@BaseTycoonComponent": "$t:src/source/BaseTycoonComponent@BaseTycoonComponent",
+		"@rbxts/flamework-tycoon:out/src/source/TycoonComponent@TycoonComponent": "$t:src/source/TycoonComponent@TycoonComponent",
+		"@rbxts/flamework-tycoon:out/src/source/TycoonService@TycoonService": "$t:src/source/TycoonService@TycoonService",
+		"@rbxts/flamework-tycoon:out/src/source/item/TycoonItem@TycoonItem1": "$t:src/source/item/TycoonItem@TycoonItem1",
+		"@rbxts/flamework-tycoon:out/src/source/item/BaseTycoonItem@TycoonItem": "$t:src/source/item/BaseTycoonItem@TycoonItem",
+		"@rbxts/flamework-tycoon:out/test/src/server/test-service@TestService": "$t:test/src/server/test-service@TestService",
+		"@rbxts/flamework-tycoon:out/test/src/server/test-service@ATM": "$t:test/src/server/test-service@ATM",
+		"@rbxts/flamework-tycoon:out/src/source/item/TycoonItem@TycoonItem": "$t:src/source/item/TycoonItem@TycoonItem",
+		"@rbxts/flamework-tycoon:out/src/source/item/TycoonItem@DefaultTycoonItem": "$t:src/source/item/TycoonItem@DefaultTycoonItem",
+		"@rbxts/flamework-tycoon:out/test/src/server/test-service@Test": "$t:test/src/server/test-service@Test",
+		"@rbxts/flamework-tycoon:out/test/src/server/test-service@Test2": "$t:test/src/server/test-service@Test2"
+	},
+	"metadata": {},
+	"identifierPrefix": "$t",
+	"classes": [
+		{
+			"filePath": "out\\src\\source\\TycoonLogger.lua",
+			"internalId": "$t:src/source/TycoonLogger@TycoonLogger",
+			"decorators": [
+				{
+					"internalId": "$:flamework@Service",
+					"name": "Service"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\item\\BaseTycoonItem.lua",
+			"internalId": "$t:src/source/item/BaseTycoonItem@BaseTycoonItem",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\BaseTycoonComponent.lua",
+			"internalId": "$t:src/source/BaseTycoonComponent@BaseTycoonComponent",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\TycoonComponent.lua",
+			"internalId": "$t:src/source/TycoonComponent@TycoonComponent",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\TycoonService.lua",
+			"internalId": "$t:src/source/TycoonService@TycoonService",
+			"decorators": [
+				{
+					"internalId": "$:flamework@Service",
+					"name": "Service"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\item\\TycoonItem.lua",
+			"internalId": "$t:src/source/item/TycoonItem@TycoonItem1",
+			"decorators": [
+				{
+					"internalId": "$t:src/source/item/BaseTycoonItem@TycoonItem",
+					"name": "TycoonItem"
+				}
+			]
+		},
+		{
+			"filePath": "out\\test\\src\\server\\test-service.lua",
+			"internalId": "$t:test/src/server/test-service@TestService",
+			"decorators": [
+				{
+					"internalId": "$:flamework@Service",
+					"name": "Service"
+				}
+			]
+		},
+		{
+			"filePath": "out\\test\\src\\server\\test-service.lua",
+			"internalId": "$t:test/src/server/test-service@ATM",
+			"decorators": [
+				{
+					"internalId": "$t:src/source/item/BaseTycoonItem@TycoonItem",
+					"name": "TycoonItem"
+				}
+			]
+		},
+		{
+			"filePath": "out\\src\\source\\item\\TycoonItem.lua",
+			"internalId": "$t:src/source/item/TycoonItem@DefaultTycoonItem",
+			"decorators": [
+				{
+					"internalId": "$t:src/source/item/BaseTycoonItem@TycoonItem",
+					"name": "TycoonItem"
+				}
+			]
+		}
+	]
+}

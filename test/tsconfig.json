@@ -15,11 +15,11 @@
 		"moduleDetection": "force",
 		"strict": true,
 		"target": "ESNext",
-		"typeRoots": ["../node_modules/@rbxts"],
+		"typeRoots": ["./node_modules/@rbxts", "../node_modules/@rbxts", "./node_modules/@flamework", "../node_modules/@flamework"],
 
 		// configurable
 		"paths": {
-			"@rbxts/packageName": ["../../src"],
+			"@rbxts/flamework-tycoon": ["../../src"],
 		},
 		"rootDirs": [
 			"src",
@@ -29,7 +29,15 @@
 		"outDir": "./out",
 		"incremental": true,
 		"tsBuildInfoFile": "./out/tsconfig.tsbuildinfo",
-		"declaration": true
+		"declaration": true,
+		"stripInternal": true,
+		"plugins": [
+			{ 
+				"transform": "rbxts-transformer-flamework",
+				"$rbxpackmode$": true,
+				"hashPrefix": "$t",
+			}
+		]
 	},
 	"include": [
 		"./src/**/*",

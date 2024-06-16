@@ -11,7 +11,8 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "Transaction",
+    "tycoon",
+    "flamework",
     "roblox-ts"
   ],
   "repository": "https://github.com/Tesmi-Develop/flamework-tycoon",

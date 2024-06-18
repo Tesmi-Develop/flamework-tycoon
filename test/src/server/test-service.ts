@@ -1,4 +1,4 @@
-import { Service, OnStart, Flamework } from "@flamework/core";
+import { Service, OnStart, Flamework, Modding } from "@flamework/core";
 import { BaseTycoonItem, TycoonComponent, TycoonItem, TycoonService } from "@rbxts/flamework-tycoon";
 import { Players, Workspace } from "@rbxts/services";
 
@@ -21,18 +21,10 @@ export class TestService implements OnStart {
 	}
 }
 
-/** @metadata macro */
-/*
-const Test = <T extends BaseTycoonItem<any, any, any>>(
-	ctor: Constructor<T>,
-	spec?: Modding.Generic<InferData<T>, "guard">,
-) => {};*/
-
 @TycoonItem({
-	tag: "ATM",
+	tag: `${ATM}`,
 })
 class ATM extends BaseTycoonItem<{}, Model> {
-	protected dataGuard = Flamework.createGuard<{}>();
 	protected generateData() {
 		return {};
 	}

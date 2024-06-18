@@ -12,12 +12,6 @@ export interface IOwnerProfile<D extends ITycoonData = ITycoonData> {
 	readonly OnMutateData: IReadOnlySignal<(newData: Readonly<D>, prevData: Readonly<D>) => void>;
 }
 
-export interface TycoonItemConfig {
-	attributes?: { [key: string]: t.check<unknown> };
-	instanceGuard?: t.check<unknown>;
-	tag?: string;
-}
-
 export const CreateTycoonData = (): ITycoonData => ({
 	Items: new Map<string, object>(),
 });

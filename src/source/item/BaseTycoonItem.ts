@@ -1,22 +1,57 @@
-import { Flamework, Modding, OnStart, Reflect } from "@flamework/core";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Modding, OnStart, Reflect } from "@flamework/core";
 import { Component, BaseComponent, Components } from "@flamework/components";
-import { ReconcileTable, TycoonItemConfig } from "../../utility";
+import { ReconcileTable } from "../../utility";
 import { Janitor } from "@rbxts/janitor";
 import { TycoonService } from "../TycoonService";
 import { BaseTycoonComponent } from "../BaseTycoonComponent";
 import { TycoonLogger } from "../TycoonLogger";
 import { InjectTycoon } from "../decorators/Inject-tycoon";
-import { t } from "@rbxts/t";
 import { Constructor, getIdFromSpecifier } from "@flamework/components/out/utility";
+import { AbstractConstructor, isConstructor } from "@flamework/core/out/utility";
+
+type InferBaseTycoonGenerics<T extends BaseTycoonItem<any, any, any>> =
+	T extends BaseTycoonItem<infer A, infer I, infer D> ? [A, I, D] : never;
+
+type AttrubutesGuard<T extends BaseTycoonItem<any, any, any>> = Required<{
+	[K in keyof InferBaseTycoonGenerics<T>[0]]: Modding.Generic<InferBaseTycoonGenerics<T>[0][K], "guard">;
+}>;
+
+export interface TycoonItemConfig {
+	tag?: string;
+}
+
+export interface TycoonItemMetadata<T extends BaseTycoonItem = BaseTycoonItem> {
+	AttributesGuard: AttrubutesGuard<T>;
+	InstanceGuard: Modding.Generic<InferBaseTycoonGenerics<T>[1], "guard">;
+	DataGuard: Modding.Generic<InferBaseTycoonGenerics<T>[2], "guard">;
+}
+
+export const DecoratedTycoonItems = new Set<Constructor<BaseTycoonItem<any, any, any>>>();
 
 /**
  * Register a class as a tycoon item.
  *
- * @metadata flamework:implements flamework:parameters injectable intrinsic-component-decorator
+ * @metadata reflect identifier flamework:implements flamework:parameters injectable macro
  */
-export const TycoonItem = Modding.createDecorator<[config?: TycoonItemConfig]>("Class", (descriptor, [config]) => {
-	Reflect.decorate(descriptor.object, "$c:components@Component", Component, config as never);
-});
+export const TycoonItem = <T extends BaseTycoonItem>(
+	config?: TycoonItemConfig,
+	metadata?: Modding.Many<TycoonItemMetadata<T>>,
+) => {
+	assert(metadata, "metadata is required");
+
+	return (ctor: AbstractConstructor<T>) => {
+		isConstructor(ctor) && DecoratedTycoonItems.add(ctor as never);
+		Reflect.defineMetadata(ctor, "config", config);
+		Reflect.defineMetadata(ctor, "metadata", metadata);
+		Reflect.decorate(ctor, "$c:components@Component", Component, [
+			{
+				instanceGuard: metadata.InstanceGuard,
+				attributes: metadata.AttributesGuard,
+			},
+		]);
+	};
+};
 
 interface Attributes {
 	Id?: string;
@@ -34,7 +69,7 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 	private baseParent!: Instance;
 	private id!: string;
 	private isDestroyed = false;
-	protected abstract dataGuard: t.check<D>;
+	private dataGuard = Reflect.getMetadata<TycoonItemMetadata>(getmetatable(this) as never, "metadata")!.DataGuard;
 
 	constructor(
 		public readonly TycoonService: TycoonService,

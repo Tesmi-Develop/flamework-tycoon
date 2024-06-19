@@ -9,6 +9,7 @@ import { TycoonLogger } from "../TycoonLogger";
 import { InjectTycoon } from "../decorators/Inject-tycoon";
 import { Constructor, getIdFromSpecifier } from "@flamework/components/out/utility";
 import { AbstractConstructor, isConstructor } from "@flamework/core/out/utility";
+import { t } from "@rbxts/t";
 
 type InferBaseTycoonGenerics<T extends BaseTycoonItem<any, any, any>> =
 	T extends BaseTycoonItem<infer A, infer I, infer D> ? [A, I, D] : never;
@@ -69,7 +70,8 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 	private baseParent!: Instance;
 	private id!: string;
 	private isDestroyed = false;
-	private dataGuard = Reflect.getMetadata<TycoonItemMetadata>(getmetatable(this) as never, "metadata")!.DataGuard;
+	private dataGuard = Reflect.getMetadata<TycoonItemMetadata>(getmetatable(this) as never, "metadata")!
+		.DataGuard as never as t.check<D>;
 
 	constructor(
 		public readonly TycoonService: TycoonService,
@@ -81,8 +83,11 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 
 	public onStart() {
 		this.initId();
-		this.logger.Info(`${this.GetId()} is starting`);
 		this.baseParent = this.instance.Parent!;
+	}
+
+	public onSetup() {
+		this.logger.Info(`${this.GetId()} is starting`);
 
 		this.initLockState();
 		this.initEvents();
@@ -172,7 +177,7 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 	public Lock() {
 		if (this.isLocked || this.isDestroyed) return;
 		this.isLocked = true;
-		this.instance.Parent = this._tycoon.GetContainer();
+		this.setParentWhenLocked();
 
 		this.clearData();
 		this.onLocked();
@@ -181,10 +186,18 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 	public Unlock() {
 		if (!this.isLocked || this.isDestroyed) return;
 		this.isLocked = false;
-		this.instance.Parent = this.baseParent;
+		this.setParentWhenUnlocked();
 
 		this.mutateData(this.generateData());
 		this.onUnlocked();
+	}
+
+	protected setParentWhenUnlocked() {
+		this.instance.Parent = this.baseParent;
+	}
+
+	protected setParentWhenLocked() {
+		this.instance.Parent = this._tycoon.GetContainer();
 	}
 
 	/** @internal */

@@ -1,4 +1,4 @@
-import { Service, OnStart, Flamework, Modding } from "@flamework/core";
+import { Service, OnStart } from "@flamework/core";
 import { BaseTycoonItem, TycoonComponent, TycoonItem, TycoonService } from "@rbxts/flamework-tycoon";
 import { Players, Workspace } from "@rbxts/services";
 

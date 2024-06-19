@@ -96,6 +96,10 @@ export abstract class BaseTycoonComponent<
 			this.setupItem(instance, getIdFromSpecifier(taggedItems.get(foundTags[0])!)!);
 		});
 
+		this.items.forEach((item) => {
+			item.onSetup();
+		});
+
 		this.logger.Info(`Initialized items`);
 	}
 

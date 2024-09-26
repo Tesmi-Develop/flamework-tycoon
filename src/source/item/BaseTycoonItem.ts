@@ -59,8 +59,8 @@ interface Attributes {
 }
 
 @Component()
-export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instance = Instance, D extends {} = {}>
-	extends BaseComponent<A, I>
+export abstract class BaseTycoonItem<A extends object = {}, I extends Instance = Instance, D extends {} = {}>
+	extends BaseComponent<A & Attributes, I>
 	implements OnStart
 {
 	@InjectTycoon

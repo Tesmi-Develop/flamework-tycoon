@@ -14,7 +14,7 @@ export class OwnerProfile<D extends TycoonData = TycoonData> implements OwnerPro
 
 		this.janitor.Add(this.DataChanged, "destroy");
 		this.janitor.Add(
-			tycoon.OnChangedData.Connect((...args) => this.DataChanged.fire(...args)),
+			tycoon.DataChanged.Connect((...args) => this.DataChanged.fire(...args)),
 			"Disconnect",
 		);
 	}

@@ -10,6 +10,7 @@ import { InjectTycoon } from "../decorators/Inject-tycoon";
 import { Constructor, getIdFromSpecifier } from "@flamework/components/out/utility";
 import { AbstractConstructor, isConstructor } from "@flamework/core/out/utility";
 import { t } from "@rbxts/t";
+import { Signal } from "@rbxts/signals-tooling";
 
 type InferBaseTycoonGenerics<T extends BaseTycoonItem<any, any, any>> =
 	T extends BaseTycoonItem<infer A, infer I, infer D> ? [A, I, D] : never;
@@ -72,6 +73,8 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 	private isDestroyed = false;
 	private dataGuard = Reflect.getMetadata<TycoonItemMetadata>(getmetatable(this) as never, "metadata")!
 		.DataGuard as never as t.check<D>;
+
+	public readonly LockChanged = new Signal<(isLocked: boolean) => void>();
 
 	constructor(
 		public readonly TycoonService: TycoonService,
@@ -180,6 +183,7 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		this.setParentWhenLocked();
 
 		this.clearData();
+		this.LockChanged.fire(true);
 		this.onDisappear();
 	}
 
@@ -189,6 +193,7 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		this.setParentWhenUnlocked();
 
 		this.mutateData(this.generateData());
+		this.LockChanged.fire(false);
 		this.onAppear();
 	}
 

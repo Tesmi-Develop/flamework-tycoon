@@ -1,7 +1,6 @@
 import { getParentConstructor } from "@flamework/components/out/utility";
 import { Constructor, AbstractConstructor } from "@flamework/core/out/utility";
 import { IReadOnlySignal } from "@rbxts/signals-tooling";
-import { t } from "@rbxts/t";
 
 export interface ITycoonData {
 	Items: Map<string, object>;

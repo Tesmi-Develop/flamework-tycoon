@@ -120,18 +120,18 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 	private initLockState() {
 		if (this.TryGetData()) {
 			this.isLocked = true;
-			this.Unlock();
+			this.Appear();
 			return;
 		}
 
 		if (this.haveLockTag()) {
 			this.isLocked = false;
-			this.Lock();
+			this.Disappear();
 			return;
 		}
 
 		this.isLocked = true;
-		this.Unlock();
+		this.Appear();
 	}
 
 	private haveLockTag() {
@@ -170,26 +170,26 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 		return this.isLocked;
 	}
 
-	protected async onUnlocked() {}
-	protected async onLocked() {}
+	protected async onAppear() {}
+	protected async onDisappear() {}
 	protected onDestroyed() {}
 
-	public Lock() {
+	public Disappear() {
 		if (this.isLocked || this.isDestroyed) return;
 		this.isLocked = true;
 		this.setParentWhenLocked();
 
 		this.clearData();
-		this.onLocked();
+		this.onDisappear();
 	}
 
-	public Unlock() {
+	public Appear() {
 		if (!this.isLocked || this.isDestroyed) return;
 		this.isLocked = false;
 		this.setParentWhenUnlocked();
 
 		this.mutateData(this.generateData());
-		this.onUnlocked();
+		this.onAppear();
 	}
 
 	protected setParentWhenUnlocked() {

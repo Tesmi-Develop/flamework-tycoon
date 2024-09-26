@@ -29,19 +29,19 @@ class ATM extends BaseTycoonItem<{}, Model> {
 		return {};
 	}
 
-	public async onUnlocked() {
+	public async onAppear() {
 		const tycoon = this.GetTycoon();
 		if (!tycoon.HaveOwner()) return;
 
 		this.instance.PrimaryPart?.Touched.Connect((hit) => {
 			if (!tycoon.VerifyOwnerByCharacter(hit.Parent)) return;
 
-			this.Lock();
+			this.Disappear();
 		});
 	}
 
-	public async onLocked() {
+	public async onDisappear() {
 		task.wait(5);
-		this.Unlock();
+		this.Appear();
 	}
 }

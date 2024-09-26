@@ -2,16 +2,16 @@ import { getParentConstructor } from "@flamework/components/out/utility";
 import { Constructor, AbstractConstructor } from "@flamework/core/out/utility";
 import { IReadOnlySignal } from "@rbxts/signals-tooling";
 
-export interface ITycoonData {
+export interface TycoonData {
 	Items: Map<string, object>;
 }
 
-export interface IOwnerProfile<D extends ITycoonData = ITycoonData> {
+export interface OwnerProfileData<D extends TycoonData = TycoonData> {
 	readonly Instance: Player;
-	readonly OnMutateData: IReadOnlySignal<(newData: Readonly<D>, prevData: Readonly<D>) => void>;
+	readonly DataChanged: IReadOnlySignal<(newData: Readonly<D>, prevData: Readonly<D>) => void>;
 }
 
-export const CreateTycoonData = (): ITycoonData => ({
+export const CreateTycoonData = (): TycoonData => ({
 	Items: new Map<string, object>(),
 });
 

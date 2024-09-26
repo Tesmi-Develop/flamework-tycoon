@@ -1,7 +1,7 @@
 import { Component, BaseComponent, Components } from "@flamework/components";
 import { Players, RunService, ServerStorage } from "@rbxts/services";
 import { atom, subscribe } from "@rbxts/charm";
-import { IOwnerProfile, IsExtended, ITycoonData } from "../utility";
+import { OwnerProfileData, IsExtended, TycoonData } from "../utility";
 import { Flamework, Modding, OnStart } from "@flamework/core";
 import { Janitor } from "@rbxts/janitor";
 import { OwnerProfile } from "./OwnerProfile";
@@ -20,16 +20,16 @@ const TycoonStorage = (RunService.IsServer() ? new Instance("Folder", ServerStor
 export abstract class BaseTycoonComponent<
 		A extends object = {},
 		I extends Instance = Instance,
-		D extends ITycoonData = ITycoonData,
+		D extends TycoonData = TycoonData,
 	>
 	extends BaseComponent<A, I>
 	implements OnStart
 {
-	public readonly OnChangedData = new Signal<(newData: Readonly<D>, prevData: Readonly<D>) => void>();
-	public readonly OnClaim = new Signal<(newOwner: Player) => void>();
-	public readonly OnDisown = new Signal<() => void>();
-	public readonly OnChangedOwner = new Signal<(newOwner?: Player) => void>();
-	public readonly OnResetData = new Signal<() => void>();
+	public readonly DataChanged = new Signal<(newData: Readonly<D>, prevData: Readonly<D>) => void>();
+	public readonly Claimed = new Signal<(newOwner: Player) => void>();
+	public readonly Unclaimed = new Signal<() => void>();
+	public readonly OwnerChanged = new Signal<(newOwner?: Player) => void>();
+	public readonly DataResetted = new Signal<() => void>();
 
 	private container!: Folder;
 	private owner?: OwnerProfile;
@@ -63,15 +63,15 @@ export abstract class BaseTycoonComponent<
 	private initEvents() {
 		this.janitor.Add(
 			subscribe(this.dataContrainter, (newData, prevData) => {
-				this.OnChangedData.fire(newData, prevData);
+				this.DataChanged.fire(newData, prevData);
 			}),
 		);
 
-		this.janitor.Add(this.OnChangedData, "destroy");
-		this.janitor.Add(this.OnClaim, "destroy");
-		this.janitor.Add(this.OnDisown, "destroy");
-		this.janitor.Add(this.OnChangedOwner, "destroy");
-		this.janitor.Add(this.OnResetData, "destroy");
+		this.janitor.Add(this.DataChanged, "destroy");
+		this.janitor.Add(this.Claimed, "destroy");
+		this.janitor.Add(this.Unclaimed, "destroy");
+		this.janitor.Add(this.OwnerChanged, "destroy");
+		this.janitor.Add(this.DataResetted, "destroy");
 
 		this.logger.Info(`Initialized events`);
 	}
@@ -114,7 +114,7 @@ export abstract class BaseTycoonComponent<
 
 	private resetData(data?: D) {
 		this.dataContrainter(data ?? this.generateData());
-		this.OnResetData.fire();
+		this.DataResetted.fire();
 
 		this.logger.Info(`Reset data to`, this.GetData());
 	}
@@ -179,7 +179,7 @@ export abstract class BaseTycoonComponent<
 		return this.container;
 	}
 
-	public GetOwner(): IOwnerProfile | undefined {
+	public GetOwner(): OwnerProfileData | undefined {
 		return this.owner;
 	}
 
@@ -204,24 +204,24 @@ export abstract class BaseTycoonComponent<
 
 		this.owner = this.createOwnerProfile(owner);
 
-		this.OnChangedOwner.fire(owner);
-		this.OnClaim.fire(owner);
+		this.OwnerChanged.fire(owner);
+		this.Claimed.fire(owner);
 
 		this.resetData(data);
 		// TODO: event, data
 
 		this.logger.Info(`Claimed`, owner);
-		return this.owner as IOwnerProfile;
+		return this.owner as OwnerProfileData;
 	}
 
-	public Disown() {
+	public Unclaim() {
 		assert(this.owner, "Not owned!");
 
 		this.owner.Destroy();
 		this.owner = undefined;
 
-		this.OnChangedOwner.fire(undefined);
-		this.OnDisown.fire();
+		this.OwnerChanged.fire(undefined);
+		this.Unclaimed.fire();
 
 		this.logger.Info(`Disowned`);
 	}

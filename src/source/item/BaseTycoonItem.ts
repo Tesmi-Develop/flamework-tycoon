@@ -102,7 +102,7 @@ export abstract class BaseTycoonItem<A extends Attributes = {}, I extends Instan
 
 	private initEvents() {
 		this.__janitor.Add(
-			this._tycoon.OnResetData.Connect(() => this.initLockState()),
+			this._tycoon.DataResetted.Connect(() => this.initLockState()),
 			"Disconnect",
 		);
 	}

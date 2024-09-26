@@ -1,7 +1,7 @@
 import { Component, BaseComponent, Components } from "@flamework/components";
 import { Players, RunService, ServerStorage } from "@rbxts/services";
 import { atom, subscribe } from "@rbxts/charm";
-import { IOwnerProfile, IsExtended, ITycoonData } from "../utility";
+import { OwnerProfileData, IsExtended, TycoonData } from "../utility";
 import { Flamework, Modding, OnStart } from "@flamework/core";
 import { Janitor } from "@rbxts/janitor";
 import { OwnerProfile } from "./OwnerProfile";
@@ -20,7 +20,7 @@ const TycoonStorage = (RunService.IsServer() ? new Instance("Folder", ServerStor
 export abstract class BaseTycoonComponent<
 		A extends object = {},
 		I extends Instance = Instance,
-		D extends ITycoonData = ITycoonData,
+		D extends TycoonData = TycoonData,
 	>
 	extends BaseComponent<A, I>
 	implements OnStart
@@ -179,7 +179,7 @@ export abstract class BaseTycoonComponent<
 		return this.container;
 	}
 
-	public GetOwner(): IOwnerProfile | undefined {
+	public GetOwner(): OwnerProfileData | undefined {
 		return this.owner;
 	}
 
@@ -211,7 +211,7 @@ export abstract class BaseTycoonComponent<
 		// TODO: event, data
 
 		this.logger.Info(`Claimed`, owner);
-		return this.owner as IOwnerProfile;
+		return this.owner as OwnerProfileData;
 	}
 
 	public Disown() {

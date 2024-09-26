@@ -19,7 +19,7 @@ const TycoonStorage = (RunService.IsServer() ? new Instance("Folder", ServerStor
 @Component({})
 export abstract class BaseTycoonComponent<
 		A extends object = {},
-		I extends Model = Model,
+		I extends Instance = Instance,
 		D extends ITycoonData = ITycoonData,
 	>
 	extends BaseComponent<A, I>

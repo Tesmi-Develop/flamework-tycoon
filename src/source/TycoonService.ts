@@ -48,7 +48,7 @@ export class TycoonService implements OnInit {
 
 	/** @metadata macro */
 	public Create<T extends BaseTycoonComponent = TycoonComponent>(
-		model: Model,
+		model: Instance,
 		componentSpecifier?: ConstructorRef<T>,
 	) {
 		return this.components.addComponent(model, componentSpecifier);

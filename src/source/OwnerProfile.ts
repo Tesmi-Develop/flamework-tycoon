@@ -8,7 +8,7 @@ export class OwnerProfile<D extends ITycoonData = ITycoonData> implements IOwner
 	public OnMutateData = new Signal<(newData: Readonly<D>, prevData: Readonly<D>) => void>();
 	private janitor = new Janitor();
 
-	constructor(instance: Player, tycoon: BaseTycoonComponent<{}, Model, D>) {
+	constructor(instance: Player, tycoon: BaseTycoonComponent<{}, Instance, D>) {
 		this.Instance = instance;
 		this.OnMutateData = new Signal();
 

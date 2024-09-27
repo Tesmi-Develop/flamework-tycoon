@@ -44,7 +44,7 @@
   "dependencies": {
     "@flamework/components": "^1.2.3",
     "@flamework/core": "^1.2.3",
-    "@rbxts/charm": "^0.2.0",
+    "@rbxts/charm": "^0.7.3",
     "@rbxts/immut": "^0.4.4-ts.0",
     "@rbxts/janitor": "^1.15.7-ts.0",
     "@rbxts/services": "^1.5.4",

@@ -12,7 +12,7 @@
 		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@TycoonItem": "$t:source/item/BaseTycoonItem@TycoonItem"
 	},
 	"metadata": {},
-	"identifierPrefix": "$t",
+	"identifierPrefix": "@rbxts/flamework-tycoon",
 	"classes": [
 		{
 			"filePath": "out\\source\\TycoonLogger.lua",

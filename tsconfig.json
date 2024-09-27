@@ -27,8 +27,6 @@
 		"plugins": [
 			{ 
 				"transform": "rbxts-transformer-flamework",
-				"$rbxpackmode$": true,
-				"hashPrefix": "$t",
 			}
 		]
 	},

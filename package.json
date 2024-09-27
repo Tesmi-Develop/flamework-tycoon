@@ -21,6 +21,7 @@
   "types": "out/index.d.ts",
   "files": [
     "out",
+    "flamework.build",
     "!**/*.tsbuildinfo",
     "!**/*.spec.lua"
   ],

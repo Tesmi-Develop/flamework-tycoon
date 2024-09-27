@@ -2,21 +2,21 @@
 	"version": 1,
 	"flameworkVersion": "1.2.3",
 	"identifiers": {
-		"@rbxts/flamework-tycoon:out/source/OwnerProfile@OwnerProfile": "@rbxts/flamework-tycoon:source/OwnerProfile@OwnerProfile",
-		"@rbxts/flamework-tycoon:out/source/TycoonLogger@TycoonLogger": "@rbxts/flamework-tycoon:source/TycoonLogger@TycoonLogger",
-		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@BaseTycoonItem": "@rbxts/flamework-tycoon:source/item/BaseTycoonItem@BaseTycoonItem",
-		"@rbxts/flamework-tycoon:out/source/BaseTycoonComponent@BaseTycoonComponent": "@rbxts/flamework-tycoon:source/BaseTycoonComponent@BaseTycoonComponent",
-		"@rbxts/flamework-tycoon:out/source/TycoonComponent@TycoonComponent": "@rbxts/flamework-tycoon:source/TycoonComponent@TycoonComponent",
-		"@rbxts/flamework-tycoon:out/source/TycoonService@TycoonService": "@rbxts/flamework-tycoon:source/TycoonService@TycoonService",
-		"@rbxts/flamework-tycoon:out/source/item/TycoonItem@DefaultTycoonItem": "@rbxts/flamework-tycoon:source/item/TycoonItem@DefaultTycoonItem",
-		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@TycoonItem": "@rbxts/flamework-tycoon:source/item/BaseTycoonItem@TycoonItem"
+		"@rbxts/flamework-tycoon:out/source/OwnerProfile@OwnerProfile": "$t:source/OwnerProfile@OwnerProfile",
+		"@rbxts/flamework-tycoon:out/source/TycoonLogger@TycoonLogger": "$t:source/TycoonLogger@TycoonLogger",
+		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@BaseTycoonItem": "$t:source/item/BaseTycoonItem@BaseTycoonItem",
+		"@rbxts/flamework-tycoon:out/source/BaseTycoonComponent@BaseTycoonComponent": "$t:source/BaseTycoonComponent@BaseTycoonComponent",
+		"@rbxts/flamework-tycoon:out/source/TycoonComponent@TycoonComponent": "$t:source/TycoonComponent@TycoonComponent",
+		"@rbxts/flamework-tycoon:out/source/TycoonService@TycoonService": "$t:source/TycoonService@TycoonService",
+		"@rbxts/flamework-tycoon:out/source/item/TycoonItem@DefaultTycoonItem": "$t:source/item/TycoonItem@DefaultTycoonItem",
+		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@TycoonItem": "$t:source/item/BaseTycoonItem@TycoonItem"
 	},
 	"metadata": {},
-	"identifierPrefix": "@rbxts/flamework-tycoon",
+	"identifierPrefix": "$t",
 	"classes": [
 		{
 			"filePath": "out\\source\\TycoonLogger.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/TycoonLogger@TycoonLogger",
+			"internalId": "$t:source/TycoonLogger@TycoonLogger",
 			"decorators": [
 				{
 					"internalId": "$:flamework@Service",
@@ -26,7 +26,7 @@
 		},
 		{
 			"filePath": "out\\source\\item\\BaseTycoonItem.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/item/BaseTycoonItem@BaseTycoonItem",
+			"internalId": "$t:source/item/BaseTycoonItem@BaseTycoonItem",
 			"decorators": [
 				{
 					"internalId": "$c:components@Component",
@@ -36,7 +36,7 @@
 		},
 		{
 			"filePath": "out\\source\\BaseTycoonComponent.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/BaseTycoonComponent@BaseTycoonComponent",
+			"internalId": "$t:source/BaseTycoonComponent@BaseTycoonComponent",
 			"decorators": [
 				{
 					"internalId": "$c:components@Component",
@@ -46,7 +46,7 @@
 		},
 		{
 			"filePath": "out\\source\\TycoonComponent.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/TycoonComponent@TycoonComponent",
+			"internalId": "$t:source/TycoonComponent@TycoonComponent",
 			"decorators": [
 				{
 					"internalId": "$c:components@Component",
@@ -56,7 +56,7 @@
 		},
 		{
 			"filePath": "out\\source\\TycoonService.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/TycoonService@TycoonService",
+			"internalId": "$t:source/TycoonService@TycoonService",
 			"decorators": [
 				{
 					"internalId": "$:flamework@Service",
@@ -66,10 +66,10 @@
 		},
 		{
 			"filePath": "out\\source\\item\\TycoonItem.lua",
-			"internalId": "@rbxts/flamework-tycoon:source/item/TycoonItem@DefaultTycoonItem",
+			"internalId": "$t:source/item/TycoonItem@DefaultTycoonItem",
 			"decorators": [
 				{
-					"internalId": "@rbxts/flamework-tycoon:source/item/BaseTycoonItem@TycoonItem",
+					"internalId": "$t:source/item/BaseTycoonItem@TycoonItem",
 					"name": "TycoonItem"
 				}
 			]

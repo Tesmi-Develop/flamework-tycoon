@@ -5,4 +5,4 @@ export * from "./source/item/TycoonItem";
 export * from "./source/BaseTycoonComponent";
 export * from "./source/OwnerProfile";
 export * from "./source/TycoonComponent";
-import "./src/source/TycoonLogger";
+import "./source/TycoonLogger";

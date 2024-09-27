@@ -1,0 +1,78 @@
+{
+	"version": 1,
+	"flameworkVersion": "1.2.3",
+	"identifiers": {
+		"@rbxts/flamework-tycoon:out/source/OwnerProfile@OwnerProfile": "$t:source/OwnerProfile@OwnerProfile",
+		"@rbxts/flamework-tycoon:out/source/TycoonLogger@TycoonLogger": "$t:source/TycoonLogger@TycoonLogger",
+		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@BaseTycoonItem": "$t:source/item/BaseTycoonItem@BaseTycoonItem",
+		"@rbxts/flamework-tycoon:out/source/BaseTycoonComponent@BaseTycoonComponent": "$t:source/BaseTycoonComponent@BaseTycoonComponent",
+		"@rbxts/flamework-tycoon:out/source/TycoonComponent@TycoonComponent": "$t:source/TycoonComponent@TycoonComponent",
+		"@rbxts/flamework-tycoon:out/source/TycoonService@TycoonService": "$t:source/TycoonService@TycoonService",
+		"@rbxts/flamework-tycoon:out/source/item/TycoonItem@DefaultTycoonItem": "$t:source/item/TycoonItem@DefaultTycoonItem",
+		"@rbxts/flamework-tycoon:out/source/item/BaseTycoonItem@TycoonItem": "$t:source/item/BaseTycoonItem@TycoonItem"
+	},
+	"metadata": {},
+	"identifierPrefix": "@rbxts/flamework-tycoon",
+	"classes": [
+		{
+			"filePath": "out\\source\\TycoonLogger.lua",
+			"internalId": "$t:source/TycoonLogger@TycoonLogger",
+			"decorators": [
+				{
+					"internalId": "$:flamework@Service",
+					"name": "Service"
+				}
+			]
+		},
+		{
+			"filePath": "out\\source\\item\\BaseTycoonItem.lua",
+			"internalId": "$t:source/item/BaseTycoonItem@BaseTycoonItem",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\source\\BaseTycoonComponent.lua",
+			"internalId": "$t:source/BaseTycoonComponent@BaseTycoonComponent",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\source\\TycoonComponent.lua",
+			"internalId": "$t:source/TycoonComponent@TycoonComponent",
+			"decorators": [
+				{
+					"internalId": "$c:components@Component",
+					"name": "Component"
+				}
+			]
+		},
+		{
+			"filePath": "out\\source\\TycoonService.lua",
+			"internalId": "$t:source/TycoonService@TycoonService",
+			"decorators": [
+				{
+					"internalId": "$:flamework@Service",
+					"name": "Service"
+				}
+			]
+		},
+		{
+			"filePath": "out\\source\\item\\TycoonItem.lua",
+			"internalId": "$t:source/item/TycoonItem@DefaultTycoonItem",
+			"decorators": [
+				{
+					"internalId": "$t:source/item/BaseTycoonItem@TycoonItem",
+					"name": "TycoonItem"
+				}
+			]
+		}
+	]
+}

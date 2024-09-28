@@ -127,8 +127,8 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 			return;
 		}
 
-		this.isLocked = true;
-		this.Appear();
+		this.isLocked = false;
+		this.Disappear();
 	}
 
 	private hasUnlockedTag() {

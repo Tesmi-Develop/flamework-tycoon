@@ -10,7 +10,7 @@ import { IsExtended } from "../utility";
 
 @Service({})
 export class TycoonService implements OnInit {
-	private LOCK_ITEM_TAG = "LockedItem";
+	private UNLOCKED_ITEM_TAG = "UnlockedItem";
 	private items = new Map<string, Constructor<BaseTycoonItem<any, any, any>>>();
 
 	constructor(
@@ -38,12 +38,12 @@ export class TycoonService implements OnInit {
 		return this.items;
 	}
 
-	public GetLockItemTag() {
-		return this.LOCK_ITEM_TAG;
+	public GetUnlockedItemTag() {
+		return this.UNLOCKED_ITEM_TAG;
 	}
 
-	public SetLockItemTag(lockItemTag: string) {
-		this.LOCK_ITEM_TAG = lockItemTag;
+	public SetUnlockedItemTag(tag: string) {
+		this.UNLOCKED_ITEM_TAG = tag;
 	}
 
 	/** @metadata macro */

@@ -121,15 +121,9 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 	}
 
 	private initLockState() {
-		if (this.TryGetData()) {
+		if (this.hasUnlockedTag() || this.TryGetData()) {
 			this.isLocked = true;
 			this.Appear();
-			return;
-		}
-
-		if (this.hasLockTag()) {
-			this.isLocked = false;
-			this.Disappear();
 			return;
 		}
 
@@ -137,8 +131,8 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		this.Appear();
 	}
 
-	private hasLockTag() {
-		return this.instance.HasTag(this.TycoonService.GetLockItemTag());
+	private hasUnlockedTag() {
+		return this.instance.HasTag(this.TycoonService.GetUnlockedItemTag());
 	}
 
 	private initId() {

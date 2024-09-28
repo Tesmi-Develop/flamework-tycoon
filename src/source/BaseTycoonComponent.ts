@@ -191,7 +191,7 @@ export abstract class BaseTycoonComponent<
 		return this.VerifyOwner(Players.GetPlayerFromCharacter(model));
 	}
 
-	public HaveOwner() {
+	public HasOwner() {
 		return this.owner !== undefined;
 	}
 

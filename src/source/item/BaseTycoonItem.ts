@@ -127,7 +127,7 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 			return;
 		}
 
-		if (this.haveLockTag()) {
+		if (this.hasLockTag()) {
 			this.isLocked = false;
 			this.Disappear();
 			return;
@@ -137,7 +137,7 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		this.Appear();
 	}
 
-	private haveLockTag() {
+	private hasLockTag() {
 		return this.instance.HasTag(this.TycoonService.GetLockItemTag());
 	}
 

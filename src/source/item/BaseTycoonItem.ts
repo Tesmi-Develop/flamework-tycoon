@@ -21,7 +21,7 @@ type AttrubutesGuard<T extends BaseTycoonItem<any, any, any>> = Required<{
 
 export interface TycoonItemConfig {
 	tag?: string;
-	defaults: Record<string, unknown>;
+	defaults?: Record<string, unknown>;
 }
 
 export interface TycoonItemMetadata<T extends BaseTycoonItem = BaseTycoonItem> {

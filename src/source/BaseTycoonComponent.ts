@@ -204,10 +204,10 @@ export abstract class BaseTycoonComponent<
 
 		this.owner = this.createOwnerProfile(owner);
 
+		this.resetData(data);
 		this.OwnerChanged.fire(owner);
 		this.Claimed.fire(owner);
 
-		this.resetData(data);
 		// TODO: event, data
 
 		this.logger.Info(`Claimed`, owner);

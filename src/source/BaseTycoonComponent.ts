@@ -60,6 +60,15 @@ export abstract class BaseTycoonComponent<
 		this.initItems();
 	}
 
+	public GetItemsOfType<T extends object>(ctor: Constructor<T>): T[] {
+		const items: T[] = [];
+		this.items.forEach((item) => {
+			if (item instanceof ctor) items.push(item);
+		});
+
+		return items;
+	}
+
 	private initEvents() {
 		this.janitor.Add(
 			subscribe(this.dataContrainter, (newData, prevData) => {

@@ -163,7 +163,7 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		let stringPath = "";
 		path.forEach((part, index) => {
 			stringPath += part.Name;
-			if (index !== path.size()) stringPath += "/";
+			if (index + 1 !== path.size()) stringPath += "/";
 		});
 
 		return stringPath;

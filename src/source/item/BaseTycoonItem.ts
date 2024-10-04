@@ -138,7 +138,35 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 	}
 
 	private initId() {
-		this.id = this.attributes.Id ?? this.instance.Name;
+		this.id = this.attributes.Id ?? this.buildId();
+		this.logger.Info(`ID: ${this.id} for ${this.instance.Name}`);
+	}
+
+	private fallbackPath() {
+		this.logger.Warn(`Advanced path build failure for object ${this.instance.Name}, defaulting to name`);
+		return this.instance.Name;
+	}
+
+	private buildId() {
+		const tycoonInstance = this.GetTycoon().instance;
+		let path: Instance[] = [];
+
+		let currentParent: Instance = this.instance;
+		while (currentParent !== tycoonInstance) {
+			path = [currentParent, ...path];
+			if (!currentParent.Parent) return this.fallbackPath();
+
+			currentParent = currentParent.Parent;
+		}
+
+		path = [tycoonInstance, ...path];
+		let string = "";
+		path.forEach((part, index) => {
+			string += part.Name;
+			if (index !== path.size()) string += "/";
+		});
+
+		return string;
 	}
 
 	protected mutateData(newData: D) {

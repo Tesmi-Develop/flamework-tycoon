@@ -160,13 +160,13 @@ export abstract class BaseTycoonItem<A extends object = {}, I extends Instance =
 		}
 
 		path = [tycoonInstance, ...path];
-		let string = "";
+		let stringPath = "";
 		path.forEach((part, index) => {
-			string += part.Name;
-			if (index !== path.size()) string += "/";
+			stringPath += part.Name;
+			if (index !== path.size()) stringPath += "/";
 		});
 
-		return string;
+		return stringPath;
 	}
 
 	protected mutateData(newData: D) {

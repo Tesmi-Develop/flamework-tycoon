@@ -60,9 +60,10 @@ export abstract class BaseTycoonComponent<
 		this.initItems();
 	}
 
-	public GetItemsOfType<T extends object>(ctor: Constructor<T>): T[] {
+	public GetItemsOfType<T extends object>(ctor: Constructor<T>, excludeLocked: boolean = false): T[] {
 		const items: T[] = [];
 		this.items.forEach((item) => {
+			if (excludeLocked && item.IsLocked()) return;
 			if (item instanceof ctor) items.push(item);
 		});
 

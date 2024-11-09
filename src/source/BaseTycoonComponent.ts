@@ -71,7 +71,7 @@ export abstract class BaseTycoonComponent<
 	}
 
 	public GetItems() {
-		return this.items as ReadonlyMap<string, BaseTycoonItem>;
+		return [...this.items].map(([_, T]) => T);
 	}
 
 	private initEvents() {

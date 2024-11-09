@@ -70,6 +70,10 @@ export abstract class BaseTycoonComponent<
 		return items;
 	}
 
+	public GetItems() {
+		return this.items as ReadonlyMap<string, BaseTycoonItem>;
+	}
+
 	private initEvents() {
 		this.janitor.Add(
 			subscribe(this.dataContrainter, (newData, prevData) => {

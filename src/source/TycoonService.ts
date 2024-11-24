@@ -22,8 +22,7 @@ export class TycoonService implements OnInit {
 		DecoratedTycoonItems.forEach((ctor) => {
 			const config = Reflect.getMetadata<TycoonItemConfig>(ctor, "config")!;
 
-			if (!ctor) return;
-			if (!IsExtended(ctor, BaseTycoonItem)) return;
+			if (!ctor || !IsExtended(ctor, BaseTycoonItem)) return;
 			if (config.tag === undefined) return;
 
 			this.items.set(config.tag, ctor);
@@ -31,9 +30,7 @@ export class TycoonService implements OnInit {
 		});
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public GetConstructorItems() {
 		return this.items;
 	}

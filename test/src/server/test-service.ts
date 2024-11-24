@@ -31,7 +31,7 @@ class ATM extends BaseTycoonItem<{}, Model> {
 
 	public async onAppear() {
 		const tycoon = this.GetTycoon();
-		if (!tycoon.HaveOwner()) return;
+		if (!tycoon.HasOwner()) return;
 
 		this.instance.PrimaryPart?.Touched.Connect((hit) => {
 			if (!tycoon.VerifyOwnerByCharacter(hit.Parent)) return;

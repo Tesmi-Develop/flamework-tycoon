@@ -143,9 +143,7 @@ export abstract class BaseTycoonComponent<
 		return new OwnerProfile(instance, this);
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public MutateItemData(id: string, newData: object) {
 		this.dataContrainter(
 			produce(this.dataContrainter(), (draft) => {
@@ -156,9 +154,7 @@ export abstract class BaseTycoonComponent<
 		this.logger.Info(`Mutated item data`, this.dataContrainter().Items);
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public ClearItemData(id: string) {
 		this.dataContrainter(
 			produce(this.dataContrainter(), (draft) => {
@@ -222,8 +218,6 @@ export abstract class BaseTycoonComponent<
 		this.OwnerChanged.fire(owner);
 		this.Claimed.fire(owner);
 
-		// TODO: event, data
-
 		this.logger.Info(`Claimed`, owner);
 		return this.owner as OwnerProfileData;
 	}
@@ -238,6 +232,10 @@ export abstract class BaseTycoonComponent<
 		this.Unclaimed.fire();
 
 		this.logger.Info(`Disowned`);
+	}
+
+	public ResetData() {
+		this.resetData();
 	}
 
 	public Destroy() {

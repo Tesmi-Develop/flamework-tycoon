@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/flamework-tycoon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "out/init.lua",
   "scripts": {
@@ -42,10 +42,12 @@
     "roblox-ts": "^3.0.0",
     "typescript": "^5.5.3"
   },
+  "peerDependencies": {
+    "@flamework/components": "*",
+    "@flamework/core": "*",
+    "@rbxts/charm": "*"
+  },
   "dependencies": {
-    "@flamework/components": "^1.2.3",
-    "@flamework/core": "^1.2.3",
-    "@rbxts/charm": "^0.7.3",
     "@rbxts/immut": "^0.4.4-ts.0",
     "@rbxts/janitor": "^1.15.7-ts.0",
     "@rbxts/services": "^1.5.4",
